@@ -15,15 +15,18 @@
     burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
     menu.setAttribute('aria-hidden', !open);
     document.querySelector('.nav').classList.remove('hidden');
+    // круг раскрывается из центра кнопки — её место зависит от чёлки и панели Telegram
+    const b = burger.getBoundingClientRect();
+    const at = `${Math.round(b.left + b.width / 2)}px ${Math.round(b.top + b.height / 2)}px`;
     if (open) {
       lenis && lenis.stop();
-      gsap.set(menu, { visibility: 'visible' });
-      gsap.to(menu, { clipPath: 'circle(150% at calc(100% - 6vw - 24px) 42px)', duration: 0.8, ease: 'power3.inOut' });
+      gsap.set(menu, { visibility: 'visible', clipPath: `circle(0% at ${at})` });
+      gsap.to(menu, { clipPath: `circle(150% at ${at})`, duration: 0.8, ease: 'power3.inOut' });
       gsap.fromTo(links, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, stagger: 0.06, delay: 0.25, ease: 'power3.out' });
     } else {
       lenis && lenis.start();
       gsap.to(menu, {
-        clipPath: 'circle(0% at calc(100% - 6vw - 24px) 42px)', duration: 0.6, ease: 'power3.inOut',
+        clipPath: `circle(0% at ${at})`, duration: 0.6, ease: 'power3.inOut',
         onComplete: () => { if (!open) gsap.set(menu, { visibility: 'hidden' }); },
       });
     }
