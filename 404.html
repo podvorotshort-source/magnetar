@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — затянуло в чёрную дыру · Магнетар</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23ff5b2e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0e0e10; --fg: #f2f0eb; --muted: #8a8780; --accent: #ff5b2e; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    min-height: 100vh; min-height: 100svh;
+    display: grid; place-items: center;
+    padding: 24px 16px;
+    background: var(--bg); color: var(--fg);
+    font-family: "Manrope", sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hole { position: relative; width: min(70vw, 340px); aspect-ratio: 1; margin: 0 auto 40px; }
+  .ring { position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(242, 240, 235, .14); animation: spin linear infinite; }
+  .ring i { position: absolute; left: 50%; top: 0; width: 10px; height: 10px; margin: -5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+  .ring:nth-child(1) { animation-duration: 6s; }
+  .ring:nth-child(2) { inset: 18%; animation-duration: 4s; animation-direction: reverse; }
+  .ring:nth-child(2) i { background: var(--fg); box-shadow: none; }
+  .ring:nth-child(3) { inset: 34%; animation-duration: 2.5s; }
+  .core { position: absolute; inset: 40%; border-radius: 50%; background: #000; box-shadow: 0 0 60px 30px rgba(255, 91, 46, .25); }
+  .num {
+    position: absolute; left: 50%; top: 50%;
+    font-family: "Unbounded", sans-serif; font-size: clamp(56px, 14vw, 120px);
+    transform: translate(-50%, -50%);
+    animation: suck 3.5s cubic-bezier(.6, 0, .4, 1) infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes suck {
+    0%, 30% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
+    75% { transform: translate(-50%, -50%) scale(0) rotate(540deg); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
+  }
+  h1 { font-family: "Unbounded", sans-serif; font-size: clamp(24px, 5vw, 44px); line-height: 1.1; }
+  p { max-width: 420px; margin: 16px auto 32px; color: var(--muted); font-size: 17px; line-height: 1.5; }
+  a {
+    display: inline-block; padding: 18px 36px; border-radius: 99px;
+    background: var(--fg); color: var(--bg); font-weight: 700; text-decoration: none;
+    transition: background .3s, color .3s;
+  }
+  a:hover { background: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { .ring, .num { animation: none; } }
+</style>
+</head>
+<body>
+  <main>
+    <div class="hole" aria-hidden="true">
+      <div class="ring"><i></i></div>
+      <div class="ring"><i></i></div>
+      <div class="ring"><i></i></div>
+      <div class="core"></div>
+      <div class="num">404</div>
+    </div>
+    <h1>Страницу затянуло<br>в чёрную дыру</h1>
+    <p>Такой страницы нет — возможно, её притянуло слишком сильно. Зато главная на месте.</p>
+    <a href="/">Вернуться на главную</a>
+  </main>
+</body>
+</html>

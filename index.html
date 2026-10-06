@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Магнетар — лендинги, от которых невозможно оторваться</title>
+<meta name="description" content="Лендинги с живыми анимациями, написанные вручную. Оплата — только когда сайт уже работает.">
+<meta name="theme-color" content="#0e0e10">
+<!-- Превью ссылки в Telegram, ВК и мессенджерах.
+     TODO: когда будет домен — заменить og.png и og:url на полные адреса https://домен/... -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Магнетар">
+<meta property="og:title" content="Магнетар — сайты, от которых невозможно оторваться">
+<meta property="og:description" content="Лендинги под ключ с живыми анимациями. Оплата только когда сайт уже работает.">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Магнетар",
+  "description": "Разработка лендингов под ключ с живыми анимациями. Оплата после запуска сайта.",
+  "areaServed": "RU",
+  "priceRange": "5000–15000 RUB"
+}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%23ff5b2e'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/extras.css">
+</head>
+<body>
+
+<!-- Заставка: буквы притягиваются и проваливаются в чёрную дыру -->
+<div class="preloader" aria-hidden="true">
+  <div class="pl-ring"><i></i></div>
+  <div class="pl-word"></div>
+  <div class="pl-count">0</div>
+</div>
+
+<div class="cursor" aria-hidden="true"></div>
+<div class="vortex" aria-hidden="true"></div>
+
+<!-- НАВИГАЦИЯ -->
+<header class="nav">
+  <a href="#top" class="logo" data-cursor><span class="logo-star"></span>Магнетар</a>
+  <nav class="nav-links">
+    <a href="#concepts">Концепты</a>
+    <a href="#pricing">Цены</a>
+    <a href="#services">Услуги</a>
+    <a href="#process">Как работаю</a>
+    <a href="#faq">Вопросы</a>
+  </nav>
+  <div class="nav-right">
+    <span class="magnet nav-cta" data-magnetic="0.3"><a href="#contact" class="btn btn-pill btn-sm btn-solid" data-cursor><span class="mag-inner">Обсудить проект</span></a></span>
+    <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
+  </div>
+</header>
+
+<!-- Меню для телефона -->
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav class="mmenu-links">
+    <a href="#concepts">Концепты</a>
+    <a href="#pricing">Цены</a>
+    <a href="#services">Услуги</a>
+    <a href="#process">Как работаю</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contact">Контакты</a>
+  </nav>
+  <p class="mmenu-foot">Оплата — только когда сайт уже работает</p>
+</div>
+
+<!-- Плавающая кнопка связи -->
+<div class="fab">
+  <div class="fab-panel" id="fab-panel">
+    <a href="#contact" class="fab-link">Оставить заявку</a>
+  </div>
+  <span class="magnet" data-magnetic="0.4"><button class="btn btn-accent fab-btn" aria-label="Связаться" aria-expanded="false" aria-controls="fab-panel" data-cursor><span class="mag-inner"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg></span></button></span>
+</div>
+
+<main>
+
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<section class="hero" id="top">
+  <div class="hero-grid wrap">
+    <div class="hero-content">
+      <p class="hero-kicker"><span class="pulse"></span>Лендинги под ключ · без предоплаты</p>
+      <h1>
+        <span class="word"><span>Сайты,</span></span>
+        <span class="word"><span>от</span></span>
+        <span class="word"><span>которых</span></span>
+        <span class="word"><span><em>невозможно</em></span></span>
+        <span class="word"><span>оторваться</span></span>
+      </h1>
+      <p class="hero-sub">Делаю лендинги с живыми анимациями, которые притягивают клиентов. Платите, только когда сайт уже работает.</p>
+      <div class="hero-actions">
+        <span class="magnet" data-magnetic="0.3"><a href="#contact" class="btn btn-pill btn-solid" data-cursor><span class="mag-inner">Обсудить проект</span></a></span>
+        <a href="#pricing" class="link-arrow" data-cursor>Смотреть цены →</a>
+      </div>
+    </div>
+
+    <!-- Макет лендинга, который собирается на глазах -->
+    <div class="mock-wrap" aria-hidden="true">
+      <div class="mock">
+        <div class="mock-bar">
+          <span class="mock-dots"><i></i><i></i><i></i></span>
+          <span class="mock-url">vash-biznes.ru</span>
+        </div>
+        <div class="mock-page">
+          <div class="m-nav">
+            <span class="m-logo"></span>
+            <span class="m-links"><i></i><i></i><i></i></span>
+            <span class="m-navbtn"></span>
+          </div>
+          <div class="m-hero">
+            <div class="m-hero-text">
+              <span class="m-tag">Доставка за 30 минут</span>
+              <span class="m-title"><span>Свежий</span> <span>кофе</span> <span>к&nbsp;вам</span> <span>домой</span></span>
+              <span class="m-line"></span>
+              <span class="m-line m-line--short"></span>
+              <span class="m-btn">Заказать</span>
+            </div>
+            <div class="m-img"><span class="m-circle m-circle--1"></span><span class="m-circle m-circle--2"></span></div>
+          </div>
+          <div class="m-cards">
+            <div class="m-card"><i></i><b></b><b></b></div>
+            <div class="m-card"><i></i><b></b><b></b></div>
+            <div class="m-card"><i></i><b></b><b></b></div>
+          </div>
+          <div class="m-form">
+            <span class="m-input">+7 (900) 123-45-67</span>
+            <span class="m-submit">Отправить</span>
+          </div>
+        </div>
+        <svg class="m-cursor" viewBox="0 0 24 24"><path d="M4 2l16 9.5-7 1.5-3.5 7z" fill="#0e0e10" stroke="#f2f0eb" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <div class="m-toast">
+          <span class="m-toast-icon">✓</span>
+          <span><b>Новая заявка!</b><small>Заявок сегодня: <span class="m-count">12</span></small></span>
+        </div>
+      </div>
+      <ol class="mock-steps">
+        <li>Структура</li>
+        <li>Дизайн</li>
+        <li>Анимации</li>
+        <li>Заявки</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- МАНИФЕСТ -->
+<section class="manifesto wrap" id="about">
+  <span class="tag">Почему «Магнетар»</span>
+  <p class="reveal-text" data-split>Магнетар — нейтронная звезда с самым сильным магнитным полем из известных во Вселенной. Мои лендинги работают так же: притягивают клиентов и не отпускают, пока те не оставят заявку. Каждая анимация на этом сайте написана вручную — без конструкторов и шаблонов.</p>
+</section>
+
+<!-- КОНЦЕПТЫ — живые мини-сайты вместо портфолио -->
+<section class="concepts wrap" id="concepts">
+  <span class="tag">Концепты</span>
+  <div class="concepts-head">
+    <h2 class="section-title">Так может выглядеть ваш&nbsp;сайт</h2>
+    <p>Вместо портфолио — три концепта для вымышленных бизнесов. Они живые: полистайте их, добавьте кофе в корзину, запишитесь на стрижку. И всё это тоже нарисовано кодом.</p>
+  </div>
+
+  <div class="c-tabs" role="tablist">
+    <button class="c-tab active" role="tab" aria-selected="true" data-c="0" data-url="zerno-coffee.ru" data-cursor>Кофейня</button>
+    <button class="c-tab" role="tab" aria-selected="false" data-c="1" data-url="britva-barber.ru" data-cursor>Барбершоп</button>
+    <button class="c-tab" role="tab" aria-selected="false" data-c="2" data-url="ulybka-dent.ru" data-cursor>Стоматология</button>
+  </div>
+
+  <div class="c-frame">
+    <div class="c-bar"><span class="mock-dots"><i></i><i></i><i></i></span><span class="c-url">zerno-coffee.ru</span></div>
+    <div class="c-view" data-lenis-prevent>
+
+      <!-- Кофейня -->
+      <div class="cpt cpt-coffee active">
+        <div class="cc-nav"><b>зерно.</b><span>Меню</span><span>Доставка</span><span class="cc-cart">Корзина · <i class="cc-count">0</i></span></div>
+        <div class="cc-hero">
+          <div>
+            <h3>Кофе, который <em>ждёт</em> вас</h3>
+            <p>Свежая обжарка каждый день. Заберите за 5 минут или закажите доставку в офис.</p>
+            <span class="cc-btn">Выбрать кофе</span>
+          </div>
+          <div class="cc-cup"><span class="steam"></span><span class="steam"></span><span class="steam"></span><span class="cup"></span><span class="saucer"></span></div>
+        </div>
+        <h4 class="cc-h">Меню</h4>
+        <div class="cc-menu">
+          <div class="cc-item"><span class="bean" style="--c:#c8743a"></span><b>Капучино</b><small>250 мл</small><span class="cc-row">220 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#8a5a3b"></span><b>Флэт уайт</b><small>200 мл</small><span class="cc-row">240 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#a78bdb"></span><b>Лавандовый раф</b><small>300 мл</small><span class="cc-row">280 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#3b2418"></span><b>Эспрессо</b><small>40 мл</small><span class="cc-row">150 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+        </div>
+        <div class="cc-promo"><b>Второй кофе — в подарок</b><span>до 11:00 по будням</span></div>
+        <div class="cc-foot">ул. Примерная, 1 · каждый день 8:00–22:00</div>
+      </div>
+
+      <!-- Барбершоп -->
+      <div class="cpt cpt-barber">
+        <div class="cb-nav"><b>БРИТВА</b><span>Услуги</span><span>Мастера</span><span class="cb-btn">Записаться</span></div>
+        <div class="cb-hero">
+          <h3>Мужские стрижки<br><em>без ожидания</em></h3>
+          <div class="cb-pole"><span></span></div>
+        </div>
+        <div class="cb-list">
+          <div><span>Стрижка</span><i></i><b>1 500 ₽</b></div>
+          <div><span>Борода</span><i></i><b>900 ₽</b></div>
+          <div><span>Стрижка + борода</span><i></i><b>2 200 ₽</b></div>
+          <div><span>Камуфляж седины</span><i></i><b>1 200 ₽</b></div>
+        </div>
+        <h4 class="cb-h">Онлайн-запись на завтра</h4>
+        <div class="cb-slots">
+          <button>10:00</button><button disabled>11:00</button><button>12:00</button><button>13:00</button>
+          <button disabled>14:00</button><button>15:00</button><button>16:00</button><button>18:00</button>
+        </div>
+        <p class="cb-done">Выберите удобное время</p>
+      </div>
+
+      <!-- Стоматология -->
+      <div class="cpt cpt-dent">
+        <div class="cd-nav"><b>Улыбка<em>+</em></b><span>Услуги</span><span>Врачи</span><span class="cd-phone">+7 900 000-00-00</span></div>
+        <div class="cd-hero">
+          <div>
+            <span class="cd-badge">Первая консультация бесплатно</span>
+            <h3>Лечим зубы без&nbsp;боли и&nbsp;страха</h3>
+          </div>
+          <div class="cd-tooth"><span class="tooth"></span><span class="spark"></span><span class="spark"></span></div>
+        </div>
+        <div class="cd-quiz">
+          <b class="cd-q">Что вас беспокоит?</b>
+          <div class="cd-opts"><button>Болит зуб</button><button>Хочу белые зубы</button><button>Профосмотр</button><button>Брекеты</button></div>
+          <p class="cd-res">Подберём врача и время — оставьте телефон, перезвоним за 5 минут</p>
+        </div>
+        <div class="cd-docs">
+          <div><span class="ava" style="--c:#12a39a">АК</span><b>Анна Ким</b><small>Терапевт · 12 лет</small></div>
+          <div><span class="ava" style="--c:#3b6cff">ИС</span><b>Игорь Савин</b><small>Ортодонт · 9 лет</small></div>
+          <div><span class="ava" style="--c:#f0a23b">МЛ</span><b>Мария Лебедева</b><small>Хирург · 15 лет</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p class="c-hint">↕ Листайте внутри окна — это настоящая страница</p>
+</section>
+
+<!-- ПАКЕТЫ -->
+<section class="pricing wrap" id="pricing">
+  <span class="tag">Цены</span>
+  <h2 class="section-title">Пакеты</h2>
+  <div class="plans">
+    <article class="plan">
+      <div>
+        <h3 class="plan-name">Старт</h3>
+        <p class="plan-term">7 дней</p>
+      </div>
+      <p class="plan-price">5 000 ₽</p>
+      <ul class="plan-list">
+        <li>До 6 блоков</li>
+        <li>Аккуратный дизайн в вашем стиле</li>
+        <li>Базовые анимации</li>
+        <li>Адаптив под телефоны</li>
+        <li>Заявки в Telegram</li>
+        <li>Яндекс Метрика</li>
+      </ul>
+      <div class="plan-cta"><span class="magnet" data-magnetic="0.3"><a href="#contact" class="btn btn-pill btn-solid" data-plan="Старт" data-cursor><span class="mag-inner">Выбрать</span></a></span></div>
+    </article>
+
+    <article class="plan plan--hit">
+      <span class="plan-badge">Хит</span>
+      <div>
+        <h3 class="plan-name">Бизнес</h3>
+        <p class="plan-term">10–14 дней</p>
+      </div>
+      <p class="plan-price">10 000 ₽</p>
+      <ul class="plan-list">
+        <li>До 10 блоков</li>
+        <li>Уникальный дизайн</li>
+        <li>Анимации как на этом сайте</li>
+        <li>Квиз или калькулятор</li>
+        <li>Адаптив под телефоны</li>
+        <li>Заявки в Telegram + CRM</li>
+        <li>Помощь с текстами</li>
+        <li>Яндекс Метрика с целями</li>
+      </ul>
+      <div class="plan-cta"><span class="magnet" data-magnetic="0.3"><a href="#contact" class="btn btn-pill btn-accent" data-plan="Бизнес" data-cursor><span class="mag-inner">Выбрать</span></a></span></div>
+    </article>
+
+    <article class="plan">
+      <div>
+        <h3 class="plan-name">Вау</h3>
+        <p class="plan-term">3–4 недели</p>
+      </div>
+      <p class="plan-price">15 000 ₽</p>
+      <ul class="plan-list">
+        <li>Без ограничений по блокам</li>
+        <li>Уникальный дизайн с концепцией</li>
+        <li>Сложные анимации, 3D, интерактив</li>
+        <li>Квиз или калькулятор</li>
+        <li>Адаптив под телефоны</li>
+        <li>Заявки в Telegram + CRM</li>
+        <li>Тексты под ключ</li>
+        <li>Метрика, цели и A/B-тест</li>
+      </ul>
+      <div class="plan-cta"><span class="magnet" data-magnetic="0.3"><a href="#contact" class="btn btn-pill btn-solid" data-plan="Вау" data-cursor><span class="mag-inner">Выбрать</span></a></span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ДОП. УСЛУГИ — таймлайн с горизонтальным скроллом -->
+<section class="journey" id="services">
+  <div class="j-track">
+
+    <!-- вместо фото — орбита, нарисованная кодом -->
+    <div class="j-orbit" aria-hidden="true">
+      <div class="orbit-ring orbit-ring--1"><i></i></div>
+      <div class="orbit-ring orbit-ring--2"><i></i></div>
+      <div class="orbit-ring orbit-ring--3"><i></i></div>
+      <div class="orbit-core"><b>18</b><span>услуг вокруг<br>вашего сайта</span></div>
+    </div>
+
+    <div class="j-area" style="--n: 18">
+      <div class="j-line"><span class="j-cap"></span><span class="j-bar"></span><span class="j-cap"></span></div>
+
+      <div class="j-head">
+        <span class="tag">Дополнительно</span>
+        <h2>Что ещё я&nbsp;умею</h2>
+      </div>
+      <p class="j-period">от текстов<br>до онлайн-корзины</p>
+
+      <div class="j-item j-top" style="--i: 0"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>01</em> Тексты для лендинга</h3></span><span class="j-mask"><p class="j-desc">Продающие тексты под вашу аудиторию и задачу.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 1"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>02</em> Квиз или калькулятор</h3></span><span class="j-mask"><p class="j-desc">Соберёт контакты и сразу посчитает стоимость для клиента.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 2"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>03</em> Онлайн-корзина</h3></span><span class="j-mask"><p class="j-desc">Товары, корзина и оформление заказа прямо на сайте.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 3"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>04</em> Онлайн-оплата</h3></span><span class="j-mask"><p class="j-desc">Клиенты платят прямо на сайте.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 4"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>05</em> Онлайн-запись</h3></span><span class="j-mask"><p class="j-desc">Клиент сам выбирает дату и время — для салонов, врачей, услуг.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 5"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>06</em> Каталог или прайс</h3></span><span class="j-mask"><p class="j-desc">Товары и услуги с описанием и ценами.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 6"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>07</em> Подключение CRM</h3></span><span class="j-mask"><p class="j-desc">Заявки сразу попадают в Битрикс24 или amoCRM.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 7"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>08</em> Дополнительные страницы</h3></span><span class="j-mask"><p class="j-desc">«О компании», «Контакты», отдельная страница под услугу.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 8"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>09</em> Логотип</h3></span><span class="j-mask"><p class="j-desc">Простой и запоминающийся знак для бизнеса.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 9"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>10</em> Фирменный стиль</h3></span><span class="j-mask"><p class="j-desc">Цвета, шрифты, кнопки и иконки в одном стиле.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 10"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>11</em> Иллюстрации нейросетью</h3></span><span class="j-mask"><p class="j-desc">Картинки под ваш бренд вместо фотостоков.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 11"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>12</em> Английская версия</h3></span><span class="j-mask"><p class="j-desc">Перевод сайта и переключатель языка.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 12"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>13</em> Мессенджеры и карта</h3></span><span class="j-mask"><p class="j-desc">Кнопки WhatsApp и Telegram, карта проезда.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 13"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>14</em> Редизайн старого сайта</h3></span><span class="j-mask"><p class="j-desc">Освежу устаревший сайт и добавлю живые анимации.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 14"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>15</em> Перенос с Тильды</h3></span><span class="j-mask"><p class="j-desc">Тот же сайт, но кодом: быстрее и без подписки на конструктор.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 15"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>16</em> Домен и хостинг</h3></span><span class="j-mask"><p class="j-desc">Зарегистрирую домен, размещу и настрою сайт.</p></span></div></div>
+      <div class="j-item j-top" style="--i: 16"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>17</em> Политика и согласия</h3></span><span class="j-mask"><p class="j-desc">Документы по 152-ФЗ и плашка про cookie.</p></span></div></div>
+      <div class="j-item j-bottom" style="--i: 17"><span class="j-stem"></span><span class="j-dot"></span><div class="j-text"><span class="j-mask"><h3 class="j-title"><em>18</em> Поддержка и правки</h3></span><span class="j-mask"><p class="j-desc">Обновления, правки и контроль работы сайта.</p></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРОЦЕСС — стопка карточек с живыми сценами (всё нарисовано кодом) -->
+<section class="process wrap" id="process">
+  <span class="tag">Процесс</span>
+  <h2 class="section-title">Как я работаю</h2>
+  <div class="stack-list">
+
+    <article class="stack-card">
+      <div class="stack-text"><span class="step">Шаг 01</span><div><h3>Заявка и бриф</h3><p>Созваниваемся, разбираемся в вашем бизнесе и задаче. Бесплатно.</p></div></div>
+      <div class="scene scene-chat" aria-hidden="true">
+        <div class="chat">
+          <div class="chat-head"><span class="chat-ava"></span><span><b>Кофейня «Зерно»</b><small>онлайн</small></span></div>
+          <div class="chat-body">
+            <div class="msg msg--in">Здравствуйте! Нужен сайт для кофейни</div>
+            <div class="msg msg--out">Отлично! Кто ваши клиенты?</div>
+            <div class="msg msg--in">Офисы рядом, берут кофе с собой</div>
+            <div class="msg msg--out">Понял. Сделаем упор на заказ за 30 секунд</div>
+            <div class="typing"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="stack-card">
+      <div class="stack-text"><span class="step">Шаг 02</span><div><h3>Прототип</h3><p>Структура и тексты, которые ведут посетителя к заявке.</p></div></div>
+      <div class="scene scene-wire" aria-hidden="true">
+        <svg viewBox="0 0 400 300" class="wire">
+          <rect class="w" x="10" y="10" width="380" height="280" rx="14" pathLength="1"/>
+          <rect class="w" x="30" y="30" width="40" height="12" rx="6" pathLength="1"/>
+          <rect class="w" x="250" y="32" width="120" height="8" rx="4" pathLength="1"/>
+          <rect class="w" x="30" y="70" width="170" height="22" rx="4" pathLength="1"/>
+          <rect class="w" x="30" y="100" width="130" height="22" rx="4" pathLength="1"/>
+          <rect class="w" x="30" y="136" width="150" height="8" rx="4" pathLength="1"/>
+          <rect class="w" x="30" y="166" width="80" height="26" rx="13" pathLength="1"/>
+          <rect class="w" x="220" y="66" width="150" height="126" rx="10" pathLength="1"/>
+          <path class="w" d="M220 66 L370 192 M370 66 L220 192" pathLength="1"/>
+          <rect class="w" x="30" y="214" width="105" height="56" rx="8" pathLength="1"/>
+          <rect class="w" x="147" y="214" width="106" height="56" rx="8" pathLength="1"/>
+          <rect class="w" x="265" y="214" width="105" height="56" rx="8" pathLength="1"/>
+          <text class="wl" x="206" y="86">← оффер</text>
+          <text class="wl" x="118" y="184">← кнопка</text>
+          <text class="wl" x="268" y="134">фото</text>
+          <text class="wl" x="160" y="246">преимущества</text>
+        </svg>
+      </div>
+    </article>
+
+    <article class="stack-card">
+      <div class="stack-text"><span class="step">Шаг 03</span><div><h3>Дизайн и анимации</h3><p>Уникальный визуал под ваш бренд. Показываю промежуточные результаты.</p></div></div>
+      <div class="scene scene-design" aria-hidden="true">
+        <div class="dpage">
+          <div class="d-nav"><i class="d-logo"></i><i class="d-links"></i></div>
+          <div class="d-hero">
+            <div class="d-text"><i class="d-t1"></i><i class="d-t2"></i><i class="d-p"></i><i class="d-btn"></i></div>
+            <div class="d-img"><span class="d-fill"></span><span class="d-orb"></span></div>
+          </div>
+          <div class="d-cards"><i></i><i></i><i></i></div>
+        </div>
+        <div class="swatches"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </article>
+
+    <article class="stack-card">
+      <div class="stack-text"><span class="step">Шаг 04</span><div><h3>Запуск</h3><p>Размещаю сайт, подключаю формы и аналитику. Вы проверяете, что всё работает.</p></div></div>
+      <div class="scene scene-launch" aria-hidden="true">
+        <div class="term">
+          <div class="term-bar"><i></i><i></i><i></i><span>запуск сайта</span></div>
+          <div class="term-body">
+            <p class="t-line">✓ Файлы загружены на сервер</p>
+            <p class="t-line">✓ Домен vash-biznes.ru подключён</p>
+            <p class="t-line">✓ SSL-сертификат выпущен</p>
+            <p class="t-line">✓ Формы и Метрика настроены</p>
+            <div class="t-progress"><i></i></div>
+            <span class="t-pct">0%</span>
+          </div>
+          <div class="t-status"><span class="t-dot"></span>Сайт онлайн</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="stack-card">
+      <div class="stack-text"><span class="step">Шаг 05</span><div><h3>Оплата</h3><p>Только теперь вы платите — когда сайт уже запущен и работает.</p></div></div>
+      <div class="scene scene-pay" aria-hidden="true">
+        <div class="pay">
+          <div class="pay-row"><span class="pay-icon"></span><span><b class="pay-title">Проверяем сайт…</b><small>vash-biznes.ru</small></span></div>
+          <div class="pay-row pay-bill"><span><small>К оплате</small><b>10 000 ₽</b></span><span class="pay-btn">Оплатить</span></div>
+          <p class="pay-note">Оплата откроется только после запуска</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ОПЛАТА В КОНЦЕ — раскрытие кругом -->
+<section class="guarantee">
+  <div class="guarantee-tag"><span class="tag">Без риска</span></div>
+  <div class="guarantee-circle">
+    <div>
+      <h2>Оплата —<br>в&nbsp;конце</h2>
+      <p>Вы платите, только когда сайт уже запущен и работает. Никаких предоплат и авансов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- БЕГУЩАЯ СТРОКА -->
+<section class="marquee-sec" aria-hidden="true">
+  <div class="marquee" data-dir="-1"><div class="marquee-inner">Без предоплаты <span class="dot">●</span> Код вручную <span class="dot">●</span> Живые анимации <span class="dot">●</span> Под ключ <span class="dot">●</span> </div></div>
+  <div class="marquee outline" data-dir="1"><div class="marquee-inner">Сайты, которые притягивают <span class="dot">●</span> </div></div>
+</section>
+
+<!-- ТОЛЬКО КОД — фишка сайта, цифры считаются вживую -->
+<section class="nocode wrap" id="code">
+  <span class="tag">Фишка</span>
+  <div class="nocode-grid">
+    <h2 class="nocode-title"><span class="nocode-zero">0</span><span>картинок на&nbsp;этом сайте</span></h2>
+    <div>
+      <p class="nocode-text">Макет на первом экране, чёрная дыра, чат, чертёж и терминал в карточках — всё это нарисовано кодом. Ни одной фотографии, иконки из стока или шаблона.</p>
+      <p class="nocode-text nocode-text--muted">Ваш сайт, конечно, может быть с фото ваших товаров и команды. Просто теперь вы знаете: вау-эффект я сделаю и без них.</p>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b data-stat="images">0</b><span>изображений загружено</span></div>
+    <div class="stat"><b data-stat="lines">—</b><span>строк кода написано вручную</span></div>
+    <div class="stat"><b data-stat="kb">—</b><span>КБ весь мой код</span></div>
+    <div class="stat"><b data-stat="fps">—</b><span>кадров в секунду прямо сейчас</span></div>
+  </div>
+</section>
+
+<!-- ВОПРОСЫ -->
+<section class="faq wrap" id="faq">
+  <span class="tag">Вопросы</span>
+  <h2 class="section-title">Частые вопросы</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Правда без предоплаты?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>Да. Я делаю сайт, запускаю его, вы проверяете, что всё работает, — и только потом платите.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Сколько времени займёт?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>От 7 дней для «Старта» до 3–4 недель для «Вау». Точный срок назову после брифа.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Где будет размещён сайт?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>На моём хостинге. Я настраиваю сервер и слежу за работой сайта — вам не нужно разбираться в технической части.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Что нужно от меня?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>Рассказать о бизнесе и прислать логотип и фото, если они есть. Тексты могу написать сам.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Почему без Тильды и конструкторов?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>Сайт пишется кодом вручную: он быстрее загружается и умеет всё, что вы видите на этой странице, — то, чего конструкторы не позволяют.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" data-cursor>Можно вносить правки после запуска?<span class="faq-icon"></span></button>
+      <div class="faq-a"><p>Да, могу взять сайт на поддержку: правки, обновления и контроль работы.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="contact wrap" id="contact">
+  <div class="contact-grid">
+    <div>
+      <span class="tag">Контакты</span>
+      <h2 class="contact-title">Давайте<br>поработаем?</h2>
+      <p class="contact-text">Оставьте заявку — свяжусь, обсудим задачу и сроки. Оплата только когда сайт заработает.</p>
+    </div>
+    <form class="form" id="form" novalidate>
+      <div class="field">
+        <label for="f-name">Как вас зовут</label>
+        <input id="f-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="f-contact">Телефон или Telegram</label>
+        <input id="f-contact" name="contact" autocomplete="tel" required>
+      </div>
+      <fieldset class="field">
+        <legend>Пакет</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="plan" value="Старт"><span>Старт</span></label>
+          <label class="choice"><input type="radio" name="plan" value="Бизнес"><span>Бизнес</span></label>
+          <label class="choice"><input type="radio" name="plan" value="Вау"><span>Вау</span></label>
+          <label class="choice"><input type="radio" name="plan" value="Пока не знаю" checked><span>Пока не знаю</span></label>
+        </div>
+      </fieldset>
+      <!-- ловушка для спам-ботов: человек это поле не видит -->
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field">
+        <label for="f-msg">О проекте</label>
+        <textarea id="f-msg" name="message" rows="3"></textarea>
+      </div>
+      <span class="magnet" data-magnetic="0.3"><button type="submit" class="btn btn-pill btn-solid" data-cursor><span class="mag-inner">Отправить заявку</span></button></span>
+      <p class="form-note" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer wrap">
+  <a href="#top" class="logo" data-cursor><span class="logo-star"></span>Магнетар</a>
+  <p>© 2026 · Сделано кодом, без единой картинки · <span class="egg-hint">зажмите мышь на пустом месте…</span></p>
+  <span class="magnet" data-magnetic="0.3"><a href="#top" class="btn btn-pill btn-sm" data-cursor><span class="mag-inner">Наверх ↑</span></a></span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/preloader.js"></script>
+<script src="js/hero.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/main.js"></script>
+<script src="js/extras.js"></script>
+</body>
+</html>
