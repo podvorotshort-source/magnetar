@@ -12,11 +12,12 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
+/* страховка: ничего не должно сдвигать страницу вбок (особенно на iPhone) */
+html, body { overflow-x: hidden; overflow-x: clip; }
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: "Manrope", sans-serif;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3 { font-family: "Unbounded", sans-serif; font-weight: 600; letter-spacing: -.02em; }
@@ -639,7 +640,7 @@ main, .footer { position: relative; z-index: 1; }
 /* ---------- Контакты ---------- */
 .contact { padding-top: 14vh; padding-bottom: 14vh; border-top: 1px solid var(--line); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; }
-.contact-title { font-size: clamp(44px, 7vw, 120px); line-height: 1; font-weight: 800; }
+.contact-title { font-size: clamp(34px, 7vw, 120px); line-height: 1; font-weight: 800; }
 .contact-text { max-width: 440px; margin-top: 32px; color: var(--muted); font-size: 18px; line-height: 1.5; }
 .form { display: grid; gap: 32px; }
 .field { display: grid; gap: 10px; border: 0; }
@@ -659,7 +660,10 @@ main, .footer { position: relative; z-index: 1; }
 .field input:focus, .field textarea:focus { border-bottom-color: var(--accent); }
 .field.invalid input { border-bottom-color: var(--accent); }
 .choices { display: flex; flex-wrap: wrap; gap: 10px; }
-.choice input { position: absolute; opacity: 0; pointer-events: none; }
+/* скрытый кружок-переключатель: без position у .choice и с width:100% от .field input
+   он растягивался за пределы экрана, и страницу на телефоне можно было сдвинуть вбок */
+.choice { position: relative; }
+.field .choice input { position: absolute; left: 0; top: 0; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .choice span {
   display: inline-block;
   padding: 12px 22px;
@@ -674,7 +678,7 @@ main, .footer { position: relative; z-index: 1; }
 .form-note { min-height: 1.5em; color: var(--accent); }
 .form-done { font-family: "Unbounded", sans-serif; font-size: clamp(24px, 3vw, 40px); line-height: 1.2; }
 .form-done span { display: block; margin-top: 16px; font-family: "Manrope", sans-serif; font-size: 18px; color: var(--muted); }
-@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; } }
 
 /* ---------- Подвал ---------- */
 .footer {
