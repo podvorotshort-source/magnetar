@@ -125,66 +125,71 @@
   const main = document.querySelector('main');
   const HOLD = 1.4; // секунд удержания
   const INTERACTIVE = 'a, button, input, textarea, label, p, h1, h2, h3, h4, li, .mock, .scene, .c-frame, .plan, .j-item, .faq-item, .stat, .nav, .fab, .mmenu';
-  let holding = null, busy = false;
-
   const toast = document.createElement('div');
   toast.className = 'egg-toast';
   toast.innerHTML = 'Вас затянуло в&nbsp;Магнетар<small>Вот так же сайт притягивает клиентов</small>';
   document.body.appendChild(toast);
 
+  // Один запуск = одна «сессия» со своим списком блоков и своей анимацией.
+  // Новый запуск сначала полностью сворачивает предыдущий — иначе они мешали
+  // друг другу, и блок оставался наклонённым.
+  let run = null;   // { targets, tl, swallowing }
+  const props = 'transform,transformOrigin,opacity,willChange';
+
+  function cleanup(r) {
+    if (!r) return;
+    r.tl && r.tl.kill();
+    gsap.killTweensOf(r.targets);
+    gsap.set(r.targets, { clearProps: props });
+    if (run === r) {
+      run = null;
+      document.documentElement.classList.remove('egg-active');
+      lenis && lenis.start();
+    }
+  }
+
   // Двигаем только блоки, которые сейчас на экране (а не всю страницу целиком) —
   // иначе браузер перерисовывает огромный слой и всё тормозит
-  let targets = [];
-  function pickTargets() {
+  function visibleBlocks() {
     const c = window.vortex.center;
-    targets = [...main.children].filter(el => {
+    return [...main.children].filter(el => {
       const r = el.getBoundingClientRect();
-      return r.bottom > 0 && r.top < innerHeight && r.height > 0;
-    });
-    targets.forEach(el => {
-      const r = el.getBoundingClientRect();
+      if (!(r.bottom > 0 && r.top < innerHeight && r.height > 0)) return false;
       el.style.transformOrigin = `${c.x - r.left}px ${c.y - r.top}px`;
       el.style.willChange = 'transform, opacity';
+      return true;
     });
   }
-  const start = () => {
-    document.documentElement.classList.add('egg-active');
-    lenis && lenis.stop();
-    pickTargets();
-  };
-  const finish = () => {
-    gsap.set(targets, { clearProps: 'transform,transformOrigin,opacity,willChange' });
-    targets = [];
-    document.documentElement.classList.remove('egg-active');
-    lenis && lenis.start();
-  };
 
   function release() {
-    if (!holding) return;
-    holding.kill();
-    holding = null;
-    if (busy) return;
-    gsap.to(window.vortex, { boost: 0, duration: 0.6 });
-    gsap.to(targets, { scale: 1, rotation: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)', onComplete: finish });
+    const r = run;
+    if (!r || r.swallowing) return;
+    r.tl.kill();
+    gsap.to(window.vortex, { boost: 0, duration: 0.6, overwrite: true });
+    r.tl = gsap.to(r.targets, { scale: 1, rotation: 0, duration: 0.8, ease: 'elastic.out(1, 0.4)', onComplete: () => cleanup(r) });
   }
 
-  function swallow() {
-    busy = true;
-    gsap.timeline({ onComplete: () => { busy = false; finish(); } })
-      .to(targets, { scale: 0.02, rotation: 120, opacity: 0, duration: 0.7, ease: 'power3.in' })
+  function swallow(r) {
+    r.swallowing = true;
+    r.tl = gsap.timeline({ onComplete: () => cleanup(r) })
+      .to(r.targets, { scale: 0.02, rotation: 120, opacity: 0, duration: 0.7, ease: 'power3.in' })
       .to(toast, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(2)' }, '-=0.1')
       .to({}, { duration: 1.4 })
       .to(toast, { opacity: 0, duration: 0.4 })
       .to(window.vortex, { boost: 0, duration: 0.8 }, '<')
-      .to(targets, { scale: 1, rotation: 0, opacity: 1, duration: 1.2, ease: 'elastic.out(1, 0.5)' }, '<');
+      .to(r.targets, { scale: 1, rotation: 0, opacity: 1, duration: 1.2, ease: 'elastic.out(1, 0.5)' }, '<');
   }
 
   addEventListener('pointerdown', e => {
-    if (busy || e.button !== 0 || e.target.closest(INTERACTIVE)) return;
-    start();
-    holding = gsap.timeline({ onComplete: () => { holding = null; swallow(); } })
-      .to(window.vortex, { boost: 1, duration: HOLD, ease: 'power2.in' })
-      .to(targets, { scale: 0.85, rotation: 6, duration: HOLD, ease: 'power2.in' }, 0);
+    if (e.button !== 0 || e.target.closest(INTERACTIVE)) return;
+    if (run && run.swallowing) return; // идёт затягивание — дождёмся конца
+    cleanup(run);                       // предыдущий возврат ещё пружинит — сворачиваем
+    const r = run = { targets: visibleBlocks(), swallowing: false };
+    document.documentElement.classList.add('egg-active');
+    lenis && lenis.stop();
+    r.tl = gsap.timeline({ onComplete: () => swallow(r) })
+      .to(window.vortex, { boost: 1, duration: HOLD, ease: 'power2.in', overwrite: true })
+      .to(r.targets, { scale: 0.85, rotation: 6, duration: HOLD, ease: 'power2.in' }, 0);
   });
   addEventListener('pointerup', release);
   addEventListener('pointercancel', release);
