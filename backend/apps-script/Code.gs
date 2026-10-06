@@ -46,12 +46,24 @@ var QUESTIONS = [
 function doPost(e) {
   try {
     var body = JSON.parse((e && e.postData && e.postData.contents) || "{}");
-    if (body.update_id !== undefined) return handleTelegram_(e, body);
+    if (body.update_id !== undefined) {
+      try { handleTelegram_(e, body); } catch (err) { console.error(err); }
+      return telegramOk_();
+    }
     return handleSiteForm_(body);
   } catch (err) {
     console.error(err);
     return json_({ ok: false });
   }
+}
+
+/**
+ * Ответ Telegram'у. ContentService отвечает переадресацией (302), Telegram
+ * считает это ошибкой, присылает обновление снова и придерживает следующие —
+ * бот «зависает». HtmlService отвечает сразу кодом 200.
+ */
+function telegramOk_() {
+  return HtmlService.createHtmlOutput("ok");
 }
 
 /** Открытие URL в браузере — просто проверка, что скрипт развёрнут. */
@@ -113,7 +125,10 @@ function handleTelegram_(e, update) {
   if (!chat || chat.type !== "private") return json_({ ok: true }); // в группах бот молчит
   var user = msg ? msg.from : cb.from;
 
-  if (cb) callApi_("answerCallbackQuery", { callback_query_id: cb.id });
+  // убираем «часики» на кнопке; если нажатие устарело, Telegram вернёт ошибку — это не повод останавливаться
+  if (cb) {
+    try { callApi_("answerCallbackQuery", { callback_query_id: cb.id }); } catch (err) { console.warn(err); }
+  }
 
   var text = msg && msg.text ? msg.text.trim() : "";
   if (text.indexOf("/start") === 0 || text === "/restart") {
@@ -273,6 +288,13 @@ function setWebhook() {
   callApi_("setWebhook", { url: url + "?secret=" + secret, drop_pending_updates: true, allowed_updates: ["message", "callback_query"] });
   callApi_("setMyCommands", { commands: [{ command: "start", description: "Заполнить бриф для сайта" }] });
   console.log("Готово! Бот подключён. Напишите ему /start и проверьте анкету.");
+}
+
+/** Диагностика: что Telegram думает о подключении бота (ошибки, очередь сообщений). */
+function webhookInfo() {
+  var info = callApi_("getWebhookInfo", {});
+  console.log("Сообщений в очереди: " + info.pending_update_count);
+  console.log(info.last_error_message ? "Последняя ошибка: " + info.last_error_message : "Ошибок нет");
 }
 
 /** Если нужно снова узнать ID чата через findChatId — сначала отключите вебхук. */
