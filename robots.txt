@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /demo/
 
-# TODO: когда будет домен, добавить строку
-# Sitemap: https://домен/sitemap.xml
+Sitemap: https://magnetar-web.ru/sitemap.xml
