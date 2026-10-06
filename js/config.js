@@ -6,5 +6,5 @@ window.SITE_CONFIG = {
 
   // Юзернейм бота без @, например 'magnetar_brief_bot'.
   // Появятся кнопки «Обсудить в Telegram» (в форме и в плавающей кнопке).
-  telegramBot: '',
+  telegramBot: 'magnetar_brief_bot',
 };
