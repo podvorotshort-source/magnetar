@@ -25,6 +25,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+/* ---------- Встроенный браузер Telegram ----------
+   Он не сообщает свою панель через safe-area (inset = 0), а страница просвечивает
+   под его стеклянной шапкой. Помечаем, чтобы сделать нашу шапку сплошной. */
+if (window.TelegramWebviewProxy || window.TelegramWebview) {
+  document.documentElement.classList.add('in-tg');
+}
+
 /* ---------- Навигация: прячется при скролле вниз ---------- */
 const nav = document.querySelector('.nav');
 let lastY = 0;

@@ -120,6 +120,13 @@ section { position: relative; }
   border-bottom-color: var(--line);
 }
 .nav.hidden { transform: translateY(-100%); }
+/* в браузере Telegram шапка сплошная: под его стеклянной панелью и так просвечивает
+   страница, а вторая полупрозрачная шапка превращала это в кашу */
+.in-tg .nav, .in-tg .nav.scrolled {
+  background: var(--bg);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  border-bottom-color: var(--line);
+}
 .logo { display: inline-flex; align-items: center; gap: 12px; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 20px; }
 .logo-star {
   width: 14px; height: 14px; border-radius: 50%;
