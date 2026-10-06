@@ -36,9 +36,9 @@
 <!-- самые нужные шрифты для первого экрана грузим сразу -->
 <link rel="preload" href="fonts/unbounded-cyrillic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202610062018">
-<link rel="stylesheet" href="css/style.css?v=202610062018">
-<link rel="stylesheet" href="css/extras.css?v=202610062018">
+<link rel="stylesheet" href="css/fonts.css?v=202610062051">
+<link rel="stylesheet" href="css/style.css?v=202610062051">
+<link rel="stylesheet" href="css/extras.css?v=202610062051">
 </head>
 <body>
 
@@ -170,43 +170,21 @@
   <span class="tag">Концепты</span>
   <div class="concepts-head">
     <h2 class="section-title">Так может выглядеть ваш&nbsp;сайт</h2>
-    <p>Вместо портфолио — три концепта для вымышленных бизнесов. Они живые: полистайте их, добавьте кофе в корзину, запишитесь на стрижку. И всё это тоже нарисовано кодом.</p>
+    <p>Вместо портфолио — три концепта для вымышленных бизнесов. Они живые: полистайте их, запишитесь на стрижку, добавьте кофе в корзину. И всё это тоже нарисовано кодом.</p>
   </div>
 
   <div class="c-tabs" role="tablist">
-    <button class="c-tab active" role="tab" aria-selected="true" data-c="0" data-url="zerno-coffee.ru" data-cursor>Кофейня</button>
-    <button class="c-tab" role="tab" aria-selected="false" data-c="1" data-url="britva-barber.ru" data-cursor>Барбершоп</button>
-    <button class="c-tab" role="tab" aria-selected="false" data-c="2" data-url="ulybka-dent.ru" data-cursor>Стоматология</button>
+    <button class="c-tab active" role="tab" aria-selected="true" data-c="0" data-url="britva-barber.ru" data-cursor>Барбершоп</button>
+    <button class="c-tab" role="tab" aria-selected="false" data-c="1" data-url="ulybka-dent.ru" data-cursor>Стоматология</button>
+    <button class="c-tab" role="tab" aria-selected="false" data-c="2" data-url="zerno-coffee.ru" data-cursor>Кофейня</button>
   </div>
 
   <div class="c-frame">
-    <div class="c-bar"><span class="mock-dots"><i></i><i></i><i></i></span><span class="c-url">zerno-coffee.ru</span></div>
-    <div class="c-view" data-lenis-prevent>
-
-      <!-- Кофейня -->
-      <div class="cpt cpt-coffee active">
-        <div class="cc-nav"><b>зерно.</b><span>Меню</span><span>Доставка</span><span class="cc-cart">Корзина · <i class="cc-count">0</i></span></div>
-        <div class="cc-hero">
-          <div>
-            <h3>Кофе, который <em>ждёт</em> вас</h3>
-            <p>Свежая обжарка каждый день. Заберите за 5 минут или закажите доставку в офис.</p>
-            <span class="cc-btn">Выбрать кофе</span>
-          </div>
-          <div class="cc-cup"><span class="steam"></span><span class="steam"></span><span class="steam"></span><span class="cup"></span><span class="saucer"></span></div>
-        </div>
-        <h4 class="cc-h">Меню</h4>
-        <div class="cc-menu">
-          <div class="cc-item"><span class="bean" style="--c:#c8743a"></span><b>Капучино</b><small>250 мл</small><span class="cc-row">220 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
-          <div class="cc-item"><span class="bean" style="--c:#8a5a3b"></span><b>Флэт уайт</b><small>200 мл</small><span class="cc-row">240 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
-          <div class="cc-item"><span class="bean" style="--c:#a78bdb"></span><b>Лавандовый раф</b><small>300 мл</small><span class="cc-row">280 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
-          <div class="cc-item"><span class="bean" style="--c:#3b2418"></span><b>Эспрессо</b><small>40 мл</small><span class="cc-row">150 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
-        </div>
-        <div class="cc-promo"><b>Второй кофе — в подарок</b><span>до 11:00 по будням</span></div>
-        <div class="cc-foot">ул. Примерная, 1 · каждый день 8:00–22:00</div>
-      </div>
+    <div class="c-bar"><span class="mock-dots"><i></i><i></i><i></i></span><span class="c-url">britva-barber.ru</span></div>
+    <div class="c-view">
 
       <!-- Барбершоп -->
-      <div class="cpt cpt-barber">
+      <div class="cpt cpt-barber active">
         <div class="cb-nav"><b>БРИТВА</b><span>Услуги</span><span>Мастера</span><span class="cb-btn">Записаться</span></div>
         <div class="cb-hero">
           <h3>Мужские стрижки<br><em>без ожидания</em></h3>
@@ -246,6 +224,28 @@
           <div><span class="ava" style="--c:#3b6cff">ИС</span><b>Игорь Савин</b><small>Ортодонт · 9 лет</small></div>
           <div><span class="ava" style="--c:#f0a23b">МЛ</span><b>Мария Лебедева</b><small>Хирург · 15 лет</small></div>
         </div>
+      </div>
+
+      <!-- Кофейня -->
+      <div class="cpt cpt-coffee">
+        <div class="cc-nav"><b>зерно.</b><span>Меню</span><span>Доставка</span><span class="cc-cart">Корзина · <i class="cc-count">0</i></span></div>
+        <div class="cc-hero">
+          <div>
+            <h3>Кофе, который <em>ждёт</em> вас</h3>
+            <p>Свежая обжарка каждый день. Заберите за 5 минут или закажите доставку в офис.</p>
+            <span class="cc-btn">Выбрать кофе</span>
+          </div>
+          <div class="cc-cup"><span class="steam"></span><span class="steam"></span><span class="steam"></span><span class="cup"></span><span class="saucer"></span></div>
+        </div>
+        <h4 class="cc-h">Меню</h4>
+        <div class="cc-menu">
+          <div class="cc-item"><span class="bean" style="--c:#c8743a"></span><b>Капучино</b><small>250 мл</small><span class="cc-row">220 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#8a5a3b"></span><b>Флэт уайт</b><small>200 мл</small><span class="cc-row">240 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#a78bdb"></span><b>Лавандовый раф</b><small>300 мл</small><span class="cc-row">280 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+          <div class="cc-item"><span class="bean" style="--c:#3b2418"></span><b>Эспрессо</b><small>40 мл</small><span class="cc-row">150 ₽<button class="cc-add" aria-label="В корзину">+</button></span></div>
+        </div>
+        <div class="cc-promo"><b>Второй кофе — в подарок</b><span>до 11:00 по будням</span></div>
+        <div class="cc-foot">ул. Примерная, 1 · каждый день 8:00–22:00</div>
       </div>
 
     </div>
@@ -569,11 +569,11 @@
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="js/config.js?v=202610062018"></script>
-<script src="js/preloader.js?v=202610062018"></script>
-<script src="js/hero.js?v=202610062018"></script>
-<script src="js/scenes.js?v=202610062018"></script>
-<script src="js/main.js?v=202610062018"></script>
-<script src="js/extras.js?v=202610062018"></script>
+<script src="js/config.js?v=202610062051"></script>
+<script src="js/preloader.js?v=202610062051"></script>
+<script src="js/hero.js?v=202610062051"></script>
+<script src="js/scenes.js?v=202610062051"></script>
+<script src="js/main.js?v=202610062051"></script>
+<script src="js/extras.js?v=202610062051"></script>
 </body>
 </html>

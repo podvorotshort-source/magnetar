@@ -100,7 +100,7 @@ html.is-loading, html.is-loading body { overflow: hidden; }
 .c-bar .mock-dots { gap: 7px; }
 .c-bar .mock-dots i { width: 11px; height: 11px; }
 .c-url { padding: 6px 16px; border-radius: 99px; background: #f2f0eb; color: #6b6861; font-size: 13px; min-width: 200px; }
-.c-view { position: relative; height: min(70vh, 660px); overflow-y: auto; overscroll-behavior: contain; container-type: inline-size; scrollbar-width: thin; }
+.c-view { position: relative; height: min(70vh, 660px); overflow-y: auto; container-type: inline-size; scrollbar-width: thin; }
 .c-hint { margin-top: 16px; color: var(--muted); font-size: 14px; }
 .cpt { display: none; min-height: 100%; padding: 0 5cqw 6cqw; font-family: "Manrope", sans-serif; }
 .cpt.active { display: block; }

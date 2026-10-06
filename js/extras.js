@@ -93,6 +93,16 @@
     if (!reduceMotion) gsap.fromTo(pages[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' });
   }));
 
+  // Колёсико мыши: пока внутри окна есть куда листать — листаем окно (и не отдаём
+  // событие Lenis), а у края окна колёсико сразу продолжает листать страницу
+  view.addEventListener('wheel', e => {
+    const down = e.deltaY > 0;
+    const atEdge = down
+      ? view.scrollTop + view.clientHeight >= view.scrollHeight - 1
+      : view.scrollTop <= 0;
+    if (!atEdge) e.stopPropagation();
+  }, { passive: true });
+
   // кофейня: корзина
   const cart = section.querySelector('.cc-cart');
   const count = section.querySelector('.cc-count');
