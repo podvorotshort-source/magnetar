@@ -181,7 +181,9 @@
   }
 
   addEventListener('pointerdown', e => {
-    if (e.button !== 0 || e.target.closest(INTERACTIVE)) return;
+    // только мышь: на телефоне касание пустого места — это начало прокрутки,
+    // а пасхалка блокирует скролл
+    if (e.pointerType !== 'mouse' || e.button !== 0 || e.target.closest(INTERACTIVE)) return;
     if (run && run.swallowing) return; // идёт затягивание — дождёмся конца
     cleanup(run);                       // предыдущий возврат ещё пружинит — сворачиваем
     const r = run = { targets: visibleBlocks(), swallowing: false };

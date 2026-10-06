@@ -38,13 +38,12 @@ window.siteReady = new Promise(resolve => {
     y: () => gsap.utils.random(-320, 320),
     rotation: () => gsap.utils.random(-180, 180),
     scale: 0.3, opacity: 0,
-    duration: 1, ease: 'expo.out', stagger: 0.04,
+    duration: 0.8, ease: 'expo.out', stagger: 0.03,
   });
-  gsap.to(c, { v: 90, duration: 1.3, ease: 'power2.out', onUpdate: showCount });
+  gsap.to(c, { v: 90, duration: 0.9, ease: 'power2.out', onUpdate: showCount });
 
-  const loaded = new Promise(r => (document.readyState === 'complete' ? r() : addEventListener('load', r, { once: true })));
   const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
-  const minTime = new Promise(r => setTimeout(r, 1400));
+  const minTime = new Promise(r => setTimeout(r, 900));
 
   // смещение каждой буквы к центру слова
   const toCenter = axis => (i, el) => {
@@ -57,14 +56,15 @@ window.siteReady = new Promise(resolve => {
     if (finished) return;
     finished = true;
     gsap.timeline({ onComplete: cleanup })
-      .to(c, { v: 100, duration: 0.25, onUpdate: showCount })
-      .to(letters, { x: toCenter('x'), scale: 0, rotation: 220, duration: 0.6, ease: 'power3.in', stagger: { each: 0.03, from: 'edges' } })
-      .to(ring, { scale: 0, duration: 0.45, ease: 'power3.in' }, '<0.15')
-      .to(count, { opacity: 0, duration: 0.3 }, '<')
+      .to(c, { v: 100, duration: 0.2, onUpdate: showCount })
+      .to(letters, { x: toCenter('x'), scale: 0, rotation: 220, duration: 0.5, ease: 'power3.in', stagger: { each: 0.025, from: 'edges' } })
+      .to(ring, { scale: 0, duration: 0.4, ease: 'power3.in' }, '<0.1')
+      .to(count, { opacity: 0, duration: 0.25 }, '<')
       .call(resolve)
-      .to(pl, { clipPath: 'circle(0% at 50% 50%)', duration: 0.8, ease: 'power3.inOut' });
+      .to(pl, { clipPath: 'circle(0% at 50% 50%)', duration: 0.7, ease: 'power3.inOut' });
   };
-  Promise.all([loaded, fonts, minTime]).then(finish);
-  // страховка: если что-то зависло, всё равно открываем сайт
-  setTimeout(finish, 7000);
+  // ждём только шрифты (без них буквы «прыгнут») — не всю страницу целиком
+  Promise.all([fonts, minTime]).then(finish);
+  // страховка: на медленном интернете не держим человека дольше 2,5 секунды
+  setTimeout(finish, 2500);
 });

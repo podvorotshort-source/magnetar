@@ -14,7 +14,9 @@
   const ctx = canvas.getContext('2d');
   vortex.appendChild(canvas);
 
-  const LINES = 160, SEG = 28;
+  // на телефоне линий вдвое меньше — экран маленький, а процессор слабее
+  const small = innerWidth < 700;
+  const LINES = small ? 80 : 160, SEG = small ? 20 : 28;
   // линии задаём в единицах исходной сцены 696×316, центр в (0, 0)
   const lines = Array.from({ length: LINES }, () => {
     const a = Math.random() * Math.PI * 2;
@@ -38,7 +40,7 @@
   // Холст на весь экран и закреплён — чёрная дыра видна на всём сайте
   let W = 0, H = 0, cx = 0, cy = 0, k = 1, dpr = 1, power = 1;
   function layoutVortex() {
-    dpr = Math.min(devicePixelRatio || 1, 2);
+    dpr = Math.min(devicePixelRatio || 1, small ? 1.5 : 2);
     W = innerWidth; H = innerHeight;
     canvas.width = W * dpr; canvas.height = H * dpr;
     k = Math.max(W, H * 696 / 316) / 696;
