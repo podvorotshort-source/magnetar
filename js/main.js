@@ -12,7 +12,9 @@ if (!reduceMotion) {
 }
 
 function scrollToTarget(target) {
-  if (lenis) lenis.scrollTo(target, { duration: 1.4 });
+  // прокрутка могла быть заблокирована (открытое мобильное меню) — снимаем блок,
+  // иначе Lenis молча проигнорирует переход к разделу
+  if (lenis) { lenis.start(); lenis.scrollTo(target, { duration: 1.4 }); }
   else target.scrollIntoView({ behavior: 'smooth' });
 }
 
