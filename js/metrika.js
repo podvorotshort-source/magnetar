@@ -16,9 +16,9 @@
     ym.l = Date.now();
     const s = document.createElement('script');
     s.async = true;
-    s.src = 'https://mc.yandex.ru/metrika/tag.js';
+    s.src = 'https://mc.yandex.ru/metrika/tag.js?id=' + id;
     document.head.appendChild(s);
-    ym(id, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+    ym(id, 'init', { ssr: true, webvisor: true, clickmap: true, trackLinks: true, accurateTrackBounce: true, referrer: document.referrer, url: location.href });
   }
 
   // клики по кнопкам Telegram-бота (они появляются из JS, поэтому слушаем документ)
