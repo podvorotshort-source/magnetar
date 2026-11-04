@@ -36,9 +36,9 @@
 <!-- самые нужные шрифты для первого экрана грузим сразу -->
 <link rel="preload" href="fonts/unbounded-cyrillic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/manrope-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=202610111132">
-<link rel="stylesheet" href="css/style.css?v=202610111132">
-<link rel="stylesheet" href="css/extras.css?v=202610111132">
+<link rel="stylesheet" href="css/fonts.css?v=202611040711">
+<link rel="stylesheet" href="css/style.css?v=202611040711">
+<link rel="stylesheet" href="css/extras.css?v=202611040711">
 </head>
 <body>
 
@@ -530,11 +530,11 @@
     <form class="form" id="form" novalidate>
       <div class="field">
         <label for="f-name">Как вас зовут</label>
-        <input id="f-name" name="name" autocomplete="name" required>
+        <input id="f-name" name="name" autocomplete="name" class="ym-hide-content ym-disable-keys" required>
       </div>
       <div class="field">
         <label for="f-contact">Телефон или Telegram</label>
-        <input id="f-contact" name="contact" autocomplete="tel" required>
+        <input id="f-contact" name="contact" autocomplete="tel" class="ym-hide-content ym-disable-keys" required>
       </div>
       <fieldset class="field">
         <legend>Пакет</legend>
@@ -549,8 +549,14 @@
       <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="field">
         <label for="f-msg">О проекте</label>
-        <textarea id="f-msg" name="message" rows="3"></textarea>
+        <textarea id="f-msg" name="message" rows="3" class="ym-hide-content ym-disable-keys"></textarea>
       </div>
+      <!-- согласие по 152-ФЗ: отдельная галочка, по умолчанию не отмечена -->
+      <label class="field agree">
+        <input type="checkbox" name="consent" value="да" required>
+        <span class="agree-box" aria-hidden="true"></span>
+        <span class="agree-text">Даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> и принимаю <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a></span>
+      </label>
       <span class="magnet" data-magnetic="0.3"><button type="submit" class="btn btn-pill btn-solid" data-cursor><span class="mag-inner">Отправить заявку</span></button></span>
       <p class="form-note" role="status"></p>
     </form>
@@ -562,6 +568,7 @@
 <footer class="footer wrap">
   <a href="#top" class="logo" data-cursor><span class="logo-star"></span>Магнетар</a>
   <p>© 2026 · Сделано кодом, без единой картинки · <span class="egg-hint">на компьютере зажмите мышь на пустом месте…</span></p>
+  <p class="footer-legal"><a href="privacy.html">Политика конфиденциальности</a> · <a href="consent.html">Согласие на обработку данных</a> · <button type="button" class="cookie-reset">Настройки cookie</button></p>
   <span class="magnet" data-magnetic="0.3"><a href="#top" class="btn btn-pill btn-sm" data-cursor><span class="mag-inner">Наверх ↑</span></a></span>
 </footer>
 
@@ -569,11 +576,12 @@
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="vendor/lenis.min.js"></script>
-<script src="js/config.js?v=202610111132"></script>
-<script src="js/preloader.js?v=202610111132"></script>
-<script src="js/hero.js?v=202610111132"></script>
-<script src="js/scenes.js?v=202610111132"></script>
-<script src="js/main.js?v=202610111132"></script>
-<script src="js/extras.js?v=202610111132"></script>
+<script src="js/config.js?v=202611040711"></script>
+<script src="js/preloader.js?v=202611040711"></script>
+<script src="js/hero.js?v=202611040711"></script>
+<script src="js/scenes.js?v=202611040711"></script>
+<script src="js/main.js?v=202611040711"></script>
+<script src="js/extras.js?v=202611040711"></script>
+<script src="js/metrika.js?v=202611040711"></script>
 </body>
 </html>

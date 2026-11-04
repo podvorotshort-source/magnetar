@@ -228,12 +228,13 @@ form.addEventListener('submit', async e => {
   const required = [...form.querySelectorAll('[required]')];
   let ok = true;
   required.forEach(input => {
-    const empty = !input.value.trim();
+    const empty = input.type === 'checkbox' ? !input.checked : !input.value.trim();
     input.closest('.field').classList.toggle('invalid', empty);
     if (empty) ok = false;
   });
   if (!ok) {
-    note.textContent = 'Заполните имя и контакт для связи';
+    const onlyConsent = required.every(i => i.type === 'checkbox' || i.value.trim());
+    note.textContent = onlyConsent ? 'Отметьте согласие на обработку данных' : 'Заполните имя и контакт для связи';
     return;
   }
   if (!formEndpoint) {
@@ -256,6 +257,7 @@ form.addEventListener('submit', async e => {
     });
     const answer = await res.json().catch(() => null);
     if (!answer || !answer.ok) throw new Error((answer && answer.error) || '');
+    window.metrikaGoal && metrikaGoal('lead');
     form.innerHTML = '<p class="form-done">Спасибо, заявка отправлена!<span>Скоро свяжусь с вами.</span></p>';
     ScrollTrigger.refresh();
   } catch (err) {
