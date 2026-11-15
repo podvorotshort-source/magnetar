@@ -216,6 +216,35 @@ const formOpenedAt = Date.now();
 const { formEndpoint, telegramBot } = window.SITE_CONFIG || {};
 const submitBtn = form.querySelector('button[type="submit"] .mag-inner');
 
+// «Паспорт визита» для заявки: печатал ли человек сам, сколько был на сайте, откуда пришёл.
+// По нему видно ботов и пранкеров; заявка без паспорта отправлена в обход сайта.
+const visit = { keys: 0, pastes: 0, inputs: 0, moves: 0, firstInputAt: 0 };
+form.addEventListener('keydown', () => { visit.keys++; visit.firstInputAt ||= Date.now(); });
+form.addEventListener('paste', () => { visit.pastes++; visit.firstInputAt ||= Date.now(); });
+// input без нажатий клавиш — автозаполнение браузера; скрипт, подставивший value, его не вызывает
+form.addEventListener('input', () => { visit.inputs++; visit.firstInputAt ||= Date.now(); });
+['pointermove', 'touchstart', 'wheel', 'scroll'].forEach(type =>
+  addEventListener(type, () => { visit.moves++; }, { passive: true }));
+
+function visitInfo() {
+  const params = new URLSearchParams(location.search);
+  return {
+    onSiteSec: Math.round((Date.now() - formOpenedAt) / 1000),
+    fillSec: visit.firstInputAt ? Math.round((Date.now() - visit.firstInputAt) / 1000) : 0,
+    keys: visit.keys,
+    pastes: visit.pastes,
+    inputs: visit.inputs,
+    moves: visit.moves,
+    ref: document.referrer,
+    utm: ['utm_source', 'utm_medium', 'utm_campaign'].map(k => params.get(k)).filter(Boolean).join(' / '),
+    ua: navigator.userAgent,
+    screen: `${screen.width}×${screen.height}`,
+    tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+    lang: navigator.language || '',
+    ymId: window.metrikaClientId || '',
+  };
+}
+
 // кнопка «Обсудить в Telegram» под формой — когда указан бот
 if (telegramBot) {
   form.insertAdjacentHTML('beforeend',
@@ -252,7 +281,7 @@ form.addEventListener('submit', async e => {
       method: 'POST',
       // text/plain — «простой» запрос, Apps Script принимает его без CORS-preflight
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ ...data, elapsedMs: Date.now() - formOpenedAt }),
+      body: JSON.stringify({ ...data, elapsedMs: Date.now() - formOpenedAt, visit: visitInfo() }),
       signal: controller.signal,
     });
     const answer = await res.json().catch(() => null);

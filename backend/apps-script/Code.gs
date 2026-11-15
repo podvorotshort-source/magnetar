@@ -99,11 +99,57 @@ function handleSiteForm_(d) {
   ];
   if (message) lines.push("💬 " + esc_(message));
   lines.push("", "<i>Оплата — после запуска сайта</i>");
+  lines = lines.concat(visitLines_(d.visit));
   sendMessage_(ownerChatId_(), lines.join("\n"));
 
   cache.put(contactKey, "1", CONTACT_COOLDOWN_SEC);
   cache.put("global", String(count + 1), GLOBAL_WINDOW_SEC);
   return json_({ ok: true });
+}
+
+/**
+ * «Паспорт визита» под заявкой: как человек заполнял форму и откуда пришёл.
+ * IP Google скрипту не передаёт — поэтому смотрим на поведение.
+ */
+function visitLines_(v) {
+  if (!v || typeof v !== "object") {
+    return ["", "⚠️ <b>Отправлено в обход сайта</b> — форму не открывали в браузере. Почти наверняка бот."];
+  }
+  var num = function (x) { return Math.max(0, Math.round(Number(x) || 0)); };
+  var str = function (x, max) { return esc_(String(x || "").slice(0, max)); };
+  var onSite = num(v.onSiteSec), fill = num(v.fillSec), keys = num(v.keys), pastes = num(v.pastes),
+    inputs = num(v.inputs), moves = num(v.moves);
+
+  var flags = [];
+  if (!keys && !pastes && !inputs) flags.push("в форме ничего не вводили — поля заполнил скрипт");
+  else if (!keys && pastes) flags.push("контакты вставлены, а не напечатаны");
+  if (!moves) flags.push("не двигали мышь и не листали страницу");
+  if (onSite < 15) flags.push("на сайте меньше 15 секунд");
+
+  var out = ["", flags.length ? "⚠️ <b>Похоже на бота или пранк:</b> " + flags.join("; ") : "✅ Похоже на живого человека"];
+  out.push("⏱ На сайте " + fmtSec_(onSite) + ", форму заполняли " + fmtSec_(fill)
+    + " · нажатий клавиш " + keys + (pastes ? ", вставок " + pastes : "")
+    + (!keys && !pastes && inputs ? " (автозаполнение браузера)" : ""));
+  out.push("🔗 Откуда: " + (v.ref ? str(v.ref, 150) : "прямой заход или закладка") + (v.utm ? " · " + str(v.utm, 100) : ""));
+  out.push("📱 " + device_(String(v.ua || "")) + " · " + str(v.screen, 15) + " · " + str(v.tz, 40) + " · " + str(v.lang, 10));
+  out.push(v.ymId ? "📊 Метрика: <code>" + str(v.ymId, 30) + "</code> — найти в Вебвизоре по ClientID" : "📊 Метрика: cookie не разрешены");
+  return out;
+}
+
+function fmtSec_(s) {
+  return s < 60 ? s + " с" : Math.floor(s / 60) + " мин " + (s % 60) + " с";
+}
+
+/** Коротко об устройстве из User-Agent: «iPhone, Safari», «Windows, Chrome». */
+function device_(ua) {
+  if (!ua) return "устройство неизвестно";
+  if (/HeadlessChrome|PhantomJS|Selenium|puppeteer|bot\/|crawler|spider/i.test(ua)) return "⚠️ робот (" + esc_(ua.slice(0, 80)) + ")";
+  var os = /iPhone/.test(ua) ? "iPhone" : /iPad/.test(ua) ? "iPad" : /Android/.test(ua) ? "Android"
+    : /Windows/.test(ua) ? "Windows" : /Mac OS X/.test(ua) ? "Mac" : /Linux/.test(ua) ? "Linux" : "другая ОС";
+  var br = /YaBrowser/.test(ua) ? "Яндекс Браузер" : /Telegram/.test(ua) ? "Telegram" : /Edg\//.test(ua) ? "Edge"
+    : /OPR\//.test(ua) ? "Opera" : /Firefox\//.test(ua) ? "Firefox" : /Chrome\//.test(ua) ? "Chrome"
+    : /Safari\//.test(ua) ? "Safari" : "другой браузер";
+  return os + ", " + br;
 }
 
 /* ───────── 2. Бот-анкета ───────── */

@@ -19,6 +19,8 @@
     s.src = 'https://mc.yandex.ru/metrika/tag.js?id=' + id;
     document.head.appendChild(s);
     ym(id, 'init', { ssr: true, webvisor: true, clickmap: true, trackLinks: true, accurateTrackBounce: true, referrer: document.referrer, url: location.href });
+    // номер посетителя уходит вместе с заявкой — по нему визит находится в Вебвизоре
+    ym(id, 'getClientID', cid => { window.metrikaClientId = cid; });
   }
 
   // клики по кнопкам Telegram-бота (они появляются из JS, поэтому слушаем документ)
